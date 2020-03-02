@@ -6,7 +6,10 @@
     groups: sudo
     shell: /bin/bash
 
-- name: Add SSH public key to the new user to allow SSH access
-  authorized_key:
-    user: "{{ username }}"
-    key: "{{ user_ssh_public_key }}"
+- name: Copy over SSH authorized_keys file to new user
+  template:
+    src: authorized_keys.j2
+    dest: "{{ ansible_env.HOME }}/.ssh/authorized_keys"
+    mode: '0600'
+    owner: "{{ username }}"
+    group: "{{ username }}"

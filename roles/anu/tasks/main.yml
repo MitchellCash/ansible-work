@@ -7,9 +7,9 @@
   when: ansible_distribution == 'Ubuntu'
   tags: ufw
 
-- import_tasks: sshd_config.yml
+- import_tasks: ssh.yml
   when: ansible_distribution == 'Ubuntu'
-  tags: sshd_config
+  tags: ssh
 
 - import_tasks: create_user.yml
   when: ansible_distribution == 'Ubuntu'

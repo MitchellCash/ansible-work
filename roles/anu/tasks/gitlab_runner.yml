@@ -4,9 +4,25 @@
     curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash
     sudo apt install gitlab-runner
 
+- name: "Configure GitLab Runner: Coordinator URL"
+  pause:
+    prompt: "Enter the GitLab coordinator URL"
+  register: coordinator_url
+
+- name: "Configure GitLab Runner: Registration token"
+  pause:
+    prompt: "Enter the GitLab registration token"
+    echo: no
+  register: registration_token
+
+- name: "Configure GitLab Runner: Description"
+  pause:
+    prompt: "Enter the description for this runner"
+  register: description
+
 - name: Install GitLab Runner
   shell: >
-    sudo gitlab-runner register
+    gitlab-runner register
     --non-interactive
     --url "{{ coordinator_url }}"
     --registration-token "{{ registration_token }}"
@@ -17,3 +33,4 @@
     {% if gitlab_runner_purpose == 'ci' %}
     --executor docker
     {% endif %}
+  become: yes

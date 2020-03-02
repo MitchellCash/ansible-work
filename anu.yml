@@ -11,9 +11,5 @@
       encrypt: sha512_crypt
       confirm: yes
 
-    - name: 'user_ssh_public_key'
-      prompt: 'Enter SSH public key for the new user'
-      private: no
-
   roles:
     - anu

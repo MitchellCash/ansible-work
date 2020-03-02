@@ -24,9 +24,9 @@
   shell: >
     gitlab-runner register
     --non-interactive
-    --url "{{ coordinator_url }}"
-    --registration-token "{{ registration_token }}"
-    --description "{{ description }}"
+    --url "{{ coordinator_url.user_input }}"
+    --registration-token "{{ registration_token.user_input }}"
+    --description "{{ description.user_input }}"
     {% if gitlab_runner_purpose == 'cd' %}
     --executor shell
     {% endif %}

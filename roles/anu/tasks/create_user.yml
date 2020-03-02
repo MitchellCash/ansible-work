@@ -6,6 +6,11 @@
     groups: sudo
     shell: /bin/bash
 
+- name: Ensures .ssh dir exists
+  file:
+    path: /home/"{{ username }}"/.ssh
+    state: directory
+
 - name: Copy over SSH authorized_keys file to new user
   template:
     src: authorized_keys.j2

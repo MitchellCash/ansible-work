@@ -9,7 +9,7 @@
 - name: Copy over SSH authorized_keys file to new user
   template:
     src: authorized_keys.j2
-    dest: "{{ ansible_env.HOME }}/.ssh/authorized_keys"
+    dest: /home/"{{ username }}"/.ssh/authorized_keys"
     mode: '0600'
     owner: "{{ username }}"
     group: "{{ username }}"

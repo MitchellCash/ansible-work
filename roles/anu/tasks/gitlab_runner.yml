@@ -34,3 +34,11 @@
     --executor docker
     {% endif %}
   become: yes
+
+- name: Allow gitlab-runner user to have passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^gitlab-runner'
+    line: 'gitlab-runner ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'

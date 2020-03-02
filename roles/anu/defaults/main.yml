@@ -10,7 +10,7 @@ os_security_packages_list: ['xinetd','inetd','ypserv','telnet-server','rsh-serve
 ssh_server_port: 22
 
 # Configure NodeJS.
-node_configure: false
+node_configure: true
 node_yarn_install: false
 
 # Configure PHP.

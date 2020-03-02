@@ -1,0 +1,39 @@
+---
+- hosts: all
+  vars_prompt:
+    - name: 'username'
+      prompt: 'Enter username for the new user'
+      private: no
+
+    - name: 'password'
+      prompt: 'Enter password for the new user'
+      private: yes
+      encrypt: sha512_crypt
+      confirm: yes
+
+    - name: 'user_ssh_public_key'
+      prompt: 'Enter SSH public key for the new user'
+      private: no
+
+    - name: 'api_token'
+      prompt: 'Enter the GitLab API token (not to be confused with the Runner registration token)'
+      private: yes
+      when: gitlab_runner_configure
+
+    - name: 'coordinator_url'
+      prompt: 'Enter the GitLab coordinator URL'
+      private: no
+      when: gitlab_runner_configure
+
+    - name: 'registration_token'
+      prompt: 'Enter the GitLab registration token'
+      private: yes
+      when: gitlab_runner_configure
+
+    - name: 'description'
+      prompt: 'Enter the description for this runner'
+      private: yes
+      when: gitlab_runner_configure
+
+  roles:
+    - anu

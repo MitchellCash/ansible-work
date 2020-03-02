@@ -1,0 +1,22 @@
+---
+- name: Enable UFW
+  ufw:
+    state: enabled
+    rule: allow
+
+- name: Allow connections to SSH port
+  ufw:
+    rule: allow
+    port: "{{ ssh_server_port }}"
+
+- name: Allow connections to HTTP port
+  ufw:
+    rule: allow
+    port: '80'
+    when: nginx_configure
+
+- name: Allow connections to HTTPS port
+  ufw:
+    rule: allow
+    port: '443'
+    when: nginx_configure

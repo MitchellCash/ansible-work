@@ -1,0 +1,32 @@
+---
+- import_tasks: apt.yml
+  when: ansible_distribution == 'Ubuntu'
+  tags: apt
+
+- import_tasks: ufw.yml
+  when: ansible_distribution == 'Ubuntu'
+  tags: ufw
+
+- import_tasks: sshd_config.yml
+  when: ansible_distribution == 'Ubuntu'
+  tags: sshd_config
+
+- import_tasks: create_user.yml
+  when: ansible_distribution == 'Ubuntu'
+  tags: create_user
+
+- import_tasks: node.yml
+  when: ansible_distribution == 'Ubuntu' and node_configure
+  tags: node
+
+- import_tasks: php.yml
+  when: ansible_distribution == 'Ubuntu' and php_configure
+  tags: php
+
+- import_tasks: nginx.yml
+  when: ansible_distribution == 'Ubuntu' and nginx_configure
+  tags: nginx
+
+- import_tasks: gitlab_runner.yml
+  when: ansible_distribution == 'Ubuntu' and gitlab_runner_configure
+  tags: gitlab_runner

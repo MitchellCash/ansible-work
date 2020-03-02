@@ -1,0 +1,25 @@
+# Useful packages.
+os_recommended_packages_install: true
+os_recommended_packages_list: ['ufw', 'zip', 'unzip']
+
+# Remove packages with known issues.
+os_security_packages_clean: true
+os_security_packages_list: ['xinetd','inetd','ypserv','telnet-server','rsh-server', 'prelink']
+
+# SSH server port.
+ssh_server_port: 22
+
+# Configure NodeJS.
+node_configure: false
+node_yarn_install: false
+
+# Configure PHP.
+php_configure: false
+php_packages_list: ['php-fpm', 'php-bcmath', 'php-xml', 'php-zip']
+
+# Configure NGINX.
+nginx_configure: false
+
+# Configure GitLab Runner.
+gitlab_runner_configure: false
+gitlab_runner_purpose: cd         # Options include ci or cd

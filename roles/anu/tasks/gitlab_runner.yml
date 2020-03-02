@@ -20,7 +20,7 @@
     prompt: "Enter the description for this runner"
   register: description
 
-- name: Install GitLab Runner
+- name: Configure GitLab Runner
   shell: >
     gitlab-runner register
     --non-interactive
